@@ -90,11 +90,12 @@ const scrapeFlights = async ({ origin, destination, departureDate }) => {
     }
 
     console.log('Tentando clicar no botão "Econômica"...');
-    const economySelector = 'th[aria-label*="Economy"] span';
-    await page.waitForSelector(economySelector, { timeout: 15000 });
-    await page.click(economySelector);
-    console.log('Botão "Econômica" clicado.');
-    await delay(2000);
+const economySelector = 'span.dt-column-order[aria-label*="Economy"]';
+await page.waitForSelector(economySelector, { timeout: 20000 });
+await page.click(economySelector);
+console.log('Botão "Econômica" clicado.');
+await delay(2000);
+
 
     console.log('Clicando no botão de mais informações...');
     const infoButtonSelector = 'button.open-modal-btn';
